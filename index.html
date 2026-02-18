@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Transparent Stay — Airbnb (Student Project)</title>
+  <style>
+    :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.45; }
+    body { margin: 0; color: #111; background: #fff; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 22px; }
+    .hero { padding: 28px 0 16px; }
+    h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 10px; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(20px, 2.6vw, 28px); margin: 0 0 10px; letter-spacing: -0.01em; }
+    p { margin: 10px 0; color: #1b1b1b; }
+    .muted { color: #555; }
+    .card { border: 1px solid #eaeaea; border-radius: 16px; padding: 16px; margin: 14px 0; }
+    .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .btn { display: inline-block; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 800; }
+    .primary { background: #111; color: #fff; }
+    .secondary { border: 1px solid #111; color: #111; }
+    .badge { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #f4f4f4; margin: 6px 8px 0 0; font-weight: 650; }
+    .grid { display: grid; gap: 12px; }
+    @media (min-width: 820px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+    .price { font-size: 22px; font-weight: 900; margin: 8px 0; }
+    .recommended { border: 2px solid #111; }
+    .small { font-size: 14px; }
+    .footer { padding: 22px 0; color: #666; font-size: 13px; }
+    hr { border: 0; border-top: 1px solid #eee; margin: 12px 0; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- 1) HERO -->
+    <section class="hero">
+      <h1>Stop finding out the real price at checkout.</h1>
+      <p class="muted">
+        Transparent Stay shows the full cost upfront — including cleaning and service fees.
+        No surprises at the end. Just clarity while you compare.
+      </p>
+      <div class="btns">
+        <a class="btn primary" href="#pricing">See Transparent Stays</a>
+        <a class="btn secondary" href="#how">How it works</a>
+      </div>
+      <p class="small muted">Student project prototype (not an official Airbnb page).</p>
+    </section>
+
+    <!-- 2) TRUST BAR -->
+    <section class="card" aria-label="Trust bar">
+      <p class="muted" style="margin-top:0;"><b>Built for travelers who just want clarity.</b></p>
+      <span class="badge">✔ Full price shown upfront</span>
+      <span class="badge">✔ Verified hosts</span>
+      <span class="badge">✔ Real guest reviews</span>
+      <span class="badge">✔ Flexible cancellation options</span>
+    </section>
+
+    <!-- 3) P.A.S. -->
+    <section id="how" class="card">
+      <h2>The problem isn’t “choosing a place”. It’s losing trust mid-way.</h2>
+
+      <p><b>The Problem</b></p>
+      <p>
+        You scroll for 20 minutes. You compare options. You finally find “the one”.
+        Then at checkout the price jumps: cleaning fee, service fee, taxes.
+      </p>
+
+      <p><b>Why it matters</b></p>
+      <p>
+        That small surprise changes everything. You start doubting your choice.
+        Sometimes you leave and start over. Booking should feel simple — instead it feels stressful.
+      </p>
+
+      <p><b>The Solution</b></p>
+      <p>
+        Transparent Stay shows the total price from the beginning.
+        What you see is what you actually pay. No hidden add-ons later. Just clarity.
+      </p>
+    </section>
+
+    <!-- 4) SOCIAL PROOF + PRICING (with Revenue Booster: Decoy) -->
+    <section class="card">
+      <h2>Travelers prefer knowing the full price.</h2>
+      <div class="grid grid-3">
+        <div class="card">
+          <p>“I stopped abandoning bookings halfway.”</p>
+          <p class="muted small">— Sofia, Berlin</p>
+        </div>
+        <div class="card">
+          <p>“Comparing places is way easier now.”</p>
+          <p class="muted small">— Marco, Rome</p>
+        </div>
+        <div class="card">
+          <p>“It feels fair. I trust my choice more.”</p>
+          <p class="muted small">— Elena, Madrid</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="card">
+      <h2>Choose your booking experience.</h2>
+      <p class="muted">
+        Revenue booster used: <b>Decoy pricing</b> (Basic / Smart View / Traveler+).
+        The middle option is highlighted to guide choice.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>Basic</h3>
+          <div class="price">Free</div>
+          <p class="muted small">Standard listing view</p>
+          <p class="muted small">Final price revealed at checkout</p>
+          <a class="btn secondary" href="#cta">Use Basic</a>
+        </div>
+
+        <div class="card recommended">
+          <h3>Smart View (Recommended)</h3>
+          <div class="price">Free</div>
+          <p class="muted small">Full price shown upfront</p>
+          <p class="muted small">Cleaner comparison + more confidence</p>
+          <a class="btn primary" href="#cta">Use Smart View</a>
+        </div>
+
+        <div class="card">
+          <h3>Traveler+</h3>
+          <div class="price">€4.99 / booking</div>
+          <p class="muted small">Full price upfront + price drop alerts</p>
+          <p class="muted small">Priority support</p>
+          <a class="btn secondary" href="#cta">Go Traveler+</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5) RISK REVERSAL -->
+    <section class="card" aria-label="Risk reversal">
+      <h2>Book with confidence.</h2>
+      <p>
+        See the total price before committing. Choose listings with flexible cancellation.
+        Stick with verified hosts and real reviews.
+      </p>
+      <p class="muted">No surprises. No unnecessary stress.</p>
+    </section>
+
+    <section id="cta" class="card">
+      <h2>Ready to book without the “checkout shock”?</h2>
+      <p class="muted">Start with Smart View and compare options with the full price visible.</p>
+      <div class="btns">
+        <a class="btn primary" href="#pricing">Start Exploring Transparent Stays</a>
+        <a class="btn secondary" href="#how">Re-read how it works</a>
+      </div>
+      <hr />
+      <p class="small muted">
+        Disclaimer: This is a university project prototype. “Airbnb” is referenced for academic purposes.
+      </p>
+    </section>
+
+    <div class="footer">
+      Built as a single-page landing (HTML/CSS) for the midterm assignment.
+    </div>
+
+  </div>
+</body>
+</html>
