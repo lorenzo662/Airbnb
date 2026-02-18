@@ -3,56 +3,264 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Transparent Stay — Airbnb (Student Project)</title>
+  <title>Transparent Stay — Airbnb (Student Prototype)</title>
+
   <style>
-    :root { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.45; }
-    body { margin: 0; color: #111; background: #fff; }
-    .wrap { max-width: 980px; margin: 0 auto; padding: 22px; }
-    .hero { padding: 28px 0 16px; }
-    h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 10px; letter-spacing: -0.02em; }
-    h2 { font-size: clamp(20px, 2.6vw, 28px); margin: 0 0 10px; letter-spacing: -0.01em; }
-    p { margin: 10px 0; color: #1b1b1b; }
-    .muted { color: #555; }
-    .card { border: 1px solid #eaeaea; border-radius: 16px; padding: 16px; margin: 14px 0; }
-    .btns { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-    .btn { display: inline-block; padding: 12px 16px; border-radius: 12px; text-decoration: none; font-weight: 800; }
-    .primary { background: #111; color: #fff; }
-    .secondary { border: 1px solid #111; color: #111; }
-    .badge { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #f4f4f4; margin: 6px 8px 0 0; font-weight: 650; }
-    .grid { display: grid; gap: 12px; }
-    @media (min-width: 820px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
-    .price { font-size: 22px; font-weight: 900; margin: 8px 0; }
-    .recommended { border: 2px solid #111; }
-    .small { font-size: 14px; }
-    .footer { padding: 22px 0; color: #666; font-size: 13px; }
-    hr { border: 0; border-top: 1px solid #eee; margin: 12px 0; }
+    :root{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height: 1.45;
+
+      /* Airbnb-ish palette */
+      --airbnb: #FF385C;
+      --text: #111111;
+      --muted: #6A6A6A;
+      --border: #EBEBEB;
+      --bg: #FFFFFF;
+      --soft: #F7F7F7;
+
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 18px;
+    }
+
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .wrap{
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #fff;
+      position: sticky;
+      top: 12px;
+      z-index: 5;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      backdrop-filter: blur(6px);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+    }
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--airbnb);
+      display:inline-block;
+    }
+    .topnote{ color: var(--muted); font-size: 13px; }
+
+    /* Typography */
+    h1{
+      font-size: clamp(30px, 4vw, 48px);
+      margin: 18px 0 10px;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    h2{
+      font-size: clamp(20px, 2.6vw, 30px);
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    h3{
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    p{ margin: 10px 0; }
+    .muted{ color: var(--muted); }
+    .small{ font-size: 14px; }
+
+    /* Layout blocks */
+    .hero{
+      padding: 26px 0 10px;
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin: 14px 0;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .softcard{
+      background: var(--soft);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin: 14px 0;
+    }
+
+    .btns{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 16px;
+      border-radius: 999px;
+      text-decoration:none;
+      font-weight: 850;
+      border: 1px solid transparent;
+      transition: transform .06s ease, box-shadow .2s ease;
+      user-select:none;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .primary{
+      background: var(--airbnb);
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(255,56,92,0.25);
+    }
+    .secondary{
+      background:#fff;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .badges{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .badge{
+      background: var(--soft);
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .grid{
+      display:grid;
+      gap: 12px;
+    }
+    @media (min-width: 820px){
+      .grid-3{ grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .quote{
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+      background:#fff;
+    }
+
+    .price{
+      font-size: 22px;
+      font-weight: 950;
+      margin: 8px 0;
+      letter-spacing: -0.02em;
+    }
+
+    .plan{
+      border: 1px solid var(--border);
+      border-radius: 18px(provider);
+      border-radius: 18px;
+      padding: 16px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+    }
+
+    .recommended{
+      border: 2px solid var(--airbnb);
+      box-shadow: 0 14px 34px rgba(255,56,92,0.18);
+    }
+
+    .tag{
+      display:inline-block;
+      margin-left: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 850;
+      background: rgba(255,56,92,0.10);
+      color: var(--airbnb);
+      border: 1px solid rgba(255,56,92,0.20);
+      vertical-align: middle;
+    }
+
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .list li{ margin: 6px 0; }
+
+    .divider{
+      height: 1px;
+      background: var(--border);
+      margin: 14px 0;
+    }
+
+    .disclaimer{
+      text-align:center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 14px 0 4px;
+    }
   </style>
 </head>
 
 <body>
   <div class="wrap">
 
+    <div class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        Transparent Stay
+      </div>
+      <div class="topnote">Student prototype • academic project</div>
+    </div>
+
     <!-- 1) HERO -->
     <section class="hero">
-      <h1>Stop finding out the real price at checkout.</h1>
+      <h1>Know the full price before you book.</h1>
       <p class="muted">
-        Transparent Stay shows the full cost upfront — including cleaning and service fees.
-        No surprises at the end. Just clarity while you compare.
+        Transparent Stay shows the total cost upfront — including cleaning and service fees.
+        No “checkout shock”. Just clarity while you compare.
       </p>
       <div class="btns">
         <a class="btn primary" href="#pricing">See Transparent Stays</a>
         <a class="btn secondary" href="#how">How it works</a>
       </div>
-      <p class="small muted">Student project prototype (not an official Airbnb page).</p>
+      <p class="small muted">Not an official Airbnb page — created for a university assignment.</p>
     </section>
 
     <!-- 2) TRUST BAR -->
-    <section class="card" aria-label="Trust bar">
+    <section class="softcard">
       <p class="muted" style="margin-top:0;"><b>Built for travelers who just want clarity.</b></p>
-      <span class="badge">✔ Full price shown upfront</span>
-      <span class="badge">✔ Verified hosts</span>
-      <span class="badge">✔ Real guest reviews</span>
-      <span class="badge">✔ Flexible cancellation options</span>
+      <div class="badges">
+        <span class="badge">✔ Total price upfront</span>
+        <span class="badge">✔ Verified hosts</span>
+        <span class="badge">✔ Real guest reviews</span>
+        <span class="badge">✔ Flexible cancellation options</span>
+      </div>
     </section>
 
     <!-- 3) P.A.S. -->
@@ -67,7 +275,7 @@
 
       <p><b>Why it matters</b></p>
       <p>
-        That small surprise changes everything. You start doubting your choice.
+        That moment changes everything. You start doubting your choice.
         Sometimes you leave and start over. Booking should feel simple — instead it feels stressful.
       </p>
 
@@ -78,85 +286,102 @@
       </p>
     </section>
 
-    <!-- 4) SOCIAL PROOF + PRICING (with Revenue Booster: Decoy) -->
+    <!-- 4) SOCIAL PROOF -->
     <section class="card">
       <h2>Travelers prefer knowing the full price.</h2>
       <div class="grid grid-3">
-        <div class="card">
+        <div class="quote">
           <p>“I stopped abandoning bookings halfway.”</p>
           <p class="muted small">— Sofia, Berlin</p>
         </div>
-        <div class="card">
+        <div class="quote">
           <p>“Comparing places is way easier now.”</p>
           <p class="muted small">— Marco, Rome</p>
         </div>
-        <div class="card">
+        <div class="quote">
           <p>“It feels fair. I trust my choice more.”</p>
           <p class="muted small">— Elena, Madrid</p>
         </div>
       </div>
     </section>
 
+    <!-- 4) PRICING + Revenue Booster (Decoy) -->
     <section id="pricing" class="card">
       <h2>Choose your booking experience.</h2>
       <p class="muted">
-        Revenue booster used: <b>Decoy pricing</b> (Basic / Smart View / Traveler+).
-        The middle option is highlighted to guide choice.
+        Revenue booster used: <b>Decoy pricing</b>.
+        Basic makes the difference visible, Traveler+ anchors the top price, and Smart View becomes the “obvious” choice.
       </p>
 
-      <div class="grid grid-3">
-        <div class="card">
+      <div class="grid grid-3" style="margin-top: 12px;">
+        <div class="plan">
           <h3>Basic</h3>
           <div class="price">Free</div>
-          <p class="muted small">Standard listing view</p>
-          <p class="muted small">Final price revealed at checkout</p>
-          <a class="btn secondary" href="#cta">Use Basic</a>
+          <ul class="list">
+            <li>Standard listing view</li>
+            <li>Final price revealed at checkout</li>
+            <li>No comparison help</li>
+          </ul>
+          <div class="btns">
+            <a class="btn secondary" href="#cta">Use Basic</a>
+          </div>
         </div>
 
-        <div class="card recommended">
-          <h3>Smart View (Recommended)</h3>
-          <div class="price">Free</div>
-          <p class="muted small">Full price shown upfront</p>
-          <p class="muted small">Cleaner comparison + more confidence</p>
-          <a class="btn primary" href="#cta">Use Smart View</a>
+        <div class="plan recommended">
+          <h3>Smart View <span class="tag">Recommended</span></h3>
+          <div class="price">€1.99 <span class="muted small">/ booking</span></div>
+          <ul class="list">
+            <li>Total price shown upfront</li>
+            <li>Cleaner comparison (less mental load)</li>
+            <li>More confidence before booking</li>
+          </ul>
+          <div class="btns">
+            <a class="btn primary" href="#cta">Use Smart View</a>
+          </div>
         </div>
 
-        <div class="card">
+        <div class="plan">
           <h3>Traveler+</h3>
-          <div class="price">€4.99 / booking</div>
-          <p class="muted small">Full price upfront + price drop alerts</p>
-          <p class="muted small">Priority support</p>
-          <a class="btn secondary" href="#cta">Go Traveler+</a>
+          <div class="price">€4.99 <span class="muted small">/ booking</span></div>
+          <ul class="list">
+            <li>Total price upfront</li>
+            <li>Price drop alerts</li>
+            <li>Priority support</li>
+          </ul>
+          <div class="btns">
+            <a class="btn secondary" href="#cta">Go Traveler+</a>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- 5) RISK REVERSAL -->
-    <section class="card" aria-label="Risk reversal">
+    <section class="softcard" aria-label="Risk reversal">
       <h2>Book with confidence.</h2>
-      <p>
+      <p class="muted" style="margin-top:6px;">
         See the total price before committing. Choose listings with flexible cancellation.
         Stick with verified hosts and real reviews.
       </p>
-      <p class="muted">No surprises. No unnecessary stress.</p>
+      <p><b>No surprises. No unnecessary stress.</b></p>
     </section>
 
+    <!-- Final CTA -->
     <section id="cta" class="card">
       <h2>Ready to book without the “checkout shock”?</h2>
-      <p class="muted">Start with Smart View and compare options with the full price visible.</p>
+      <p class="muted">
+        Start with Smart View and compare options with the full price visible.
+      </p>
       <div class="btns">
         <a class="btn primary" href="#pricing">Start Exploring Transparent Stays</a>
         <a class="btn secondary" href="#how">Re-read how it works</a>
       </div>
-      <hr />
-      <p class="small muted">
-        Disclaimer: This is a university project prototype. “Airbnb” is referenced for academic purposes.
-      </p>
-    </section>
 
-    <div class="footer">
-      Built as a single-page landing (HTML/CSS) for the midterm assignment.
-    </div>
+      <div class="divider"></div>
+
+      <div class="disclaimer">
+        Disclaimer: university project prototype. “Airbnb” is referenced for academic purposes only.
+      </div>
+    </section>
 
   </div>
 </body>
